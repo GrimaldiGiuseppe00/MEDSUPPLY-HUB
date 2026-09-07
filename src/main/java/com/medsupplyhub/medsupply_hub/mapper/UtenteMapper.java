@@ -1,0 +1,19 @@
+package com.medsupplyhub.medsupply_hub.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
+import com.medsupplyhub.medsupply_hub.dto.request.utente.CreazioneUtenteDto;
+import com.medsupplyhub.medsupply_hub.model.Utente;
+
+@Mapper(componentModel = "spring")
+public interface UtenteMapper {
+	
+	@Mapping(source = "nome",target = "nome")
+	@Mapping(source = "cognome",target = "cognome")
+	@Mapping(source = "email",target = "email")
+	@Mapping(source = "ruoloUtente",target = "ruolo")
+	@Mapping(source = "telefono",target = "telefono")
+	@Mapping(target = "cliente", ignore = true)
+	Utente creazioneUtenteDtoToUtente(CreazioneUtenteDto dto);
+}
