@@ -53,13 +53,16 @@ public class Utente {
 
     @Column(name = "data_creazione", nullable = false)
     private LocalDateTime dataCreazione;
+    
+    @Column(name = "telefono",nullable = true)
+    private String telefono;
 
     @Column(name = "ultimo_accesso")
     private LocalDateTime ultimoAccesso;
     
     
 	public Utente(Long id, String email, String password, String nome, String cognome, RuoloUtente ruolo,
-			StatoUtente stato, Cliente cliente, LocalDateTime dataCreazione, LocalDateTime ultimoAccesso) {
+			StatoUtente stato, Cliente cliente, LocalDateTime dataCreazione, LocalDateTime ultimoAccesso,String telefono) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -71,6 +74,7 @@ public class Utente {
 		this.cliente = cliente;
 		this.dataCreazione = dataCreazione;
 		this.ultimoAccesso = ultimoAccesso;
+		this.telefono=telefono;
 	}
 
 	public Long getId() {
@@ -153,9 +157,17 @@ public class Utente {
 		this.ultimoAccesso = ultimoAccesso;
 	}
 
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(cognome, dataCreazione, email, id, nome, password, ruolo, stato, ultimoAccesso);
+		return Objects.hash(cognome, dataCreazione, email, id, nome, password, ruolo, stato, telefono, ultimoAccesso);
 	}
 
 	@Override
@@ -170,8 +182,13 @@ public class Utente {
 		return Objects.equals(cognome, other.cognome) && Objects.equals(dataCreazione, other.dataCreazione)
 				&& Objects.equals(email, other.email) && Objects.equals(id, other.id)
 				&& Objects.equals(nome, other.nome) && Objects.equals(password, other.password) && ruolo == other.ruolo
-				&& stato == other.stato && Objects.equals(ultimoAccesso, other.ultimoAccesso);
+				&& stato == other.stato && Objects.equals(telefono, other.telefono)
+				&& Objects.equals(ultimoAccesso, other.ultimoAccesso);
 	}
+
+	
+	
+
     
     
     
