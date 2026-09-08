@@ -41,11 +41,11 @@ public class Utente {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private RuoloUtente ruolo;
+    private RuoloUtente ruoloUtente;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatoUtente stato;
+    private StatoUtente statoUtente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
@@ -61,21 +61,25 @@ public class Utente {
     private LocalDateTime ultimoAccesso;
     
     
-	public Utente(Long id, String email, String password, String nome, String cognome, RuoloUtente ruolo,
-			StatoUtente stato, Cliente cliente, LocalDateTime dataCreazione, LocalDateTime ultimoAccesso,String telefono) {
+	public Utente(Long id, String email, String password, String nome, String cognome, RuoloUtente ruoloUtente,
+			StatoUtente statoUtente, Cliente cliente, LocalDateTime dataCreazione, LocalDateTime ultimoAccesso,String telefono) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.ruolo = ruolo;
-		this.stato = stato;
+		this.ruoloUtente = ruoloUtente;
+		this.statoUtente = statoUtente;
 		this.cliente = cliente;
 		this.dataCreazione = dataCreazione;
 		this.ultimoAccesso = ultimoAccesso;
 		this.telefono=telefono;
 	}
+	public Utente() {
+		
+	}
+
 
 	public Long getId() {
 		return id;
@@ -117,20 +121,20 @@ public class Utente {
 		this.cognome = cognome;
 	}
 
-	public RuoloUtente getRuolo() {
-		return ruolo;
+	public RuoloUtente getRuoloUtente() {
+		return ruoloUtente;
 	}
 
-	public void setRuolo(RuoloUtente ruolo) {
-		this.ruolo = ruolo;
+	public void setRuoloUtente(RuoloUtente ruolo) {
+		this.ruoloUtente = ruolo;
 	}
 
-	public StatoUtente getStato() {
-		return stato;
+	public StatoUtente getStatoUtente() {
+		return statoUtente;
 	}
 
-	public void setStato(StatoUtente stato) {
-		this.stato = stato;
+	public void setStatoUtente(StatoUtente stato) {
+		this.statoUtente = stato;
 	}
 
 	public Cliente getCliente() {
@@ -167,7 +171,7 @@ public class Utente {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cognome, dataCreazione, email, id, nome, password, ruolo, stato, telefono, ultimoAccesso);
+		return Objects.hash(cognome, dataCreazione, email, id, nome, password, ruoloUtente, ruoloUtente, telefono, ultimoAccesso);
 	}
 
 	@Override
@@ -181,8 +185,8 @@ public class Utente {
 		Utente other = (Utente) obj;
 		return Objects.equals(cognome, other.cognome) && Objects.equals(dataCreazione, other.dataCreazione)
 				&& Objects.equals(email, other.email) && Objects.equals(id, other.id)
-				&& Objects.equals(nome, other.nome) && Objects.equals(password, other.password) && ruolo == other.ruolo
-				&& stato == other.stato && Objects.equals(telefono, other.telefono)
+				&& Objects.equals(nome, other.nome) && Objects.equals(password, other.password) && ruoloUtente == other.ruoloUtente
+				&& statoUtente == other.statoUtente && Objects.equals(telefono, other.telefono)
 				&& Objects.equals(ultimoAccesso, other.ultimoAccesso);
 	}
 

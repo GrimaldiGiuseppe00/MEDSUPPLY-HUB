@@ -1,0 +1,14 @@
+package com.medsupplyhub.medsupply_hub.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.medsupplyhub.medsupply_hub.model.Cliente;
+import com.medsupplyhub.medsupply_hub.model.Utente;
+
+@Repository
+public interface UtenteRepository extends JpaRepository<Utente,Long> {
+	boolean existsByEmail(String email);
+
+	void save(Cliente cliente);
+}

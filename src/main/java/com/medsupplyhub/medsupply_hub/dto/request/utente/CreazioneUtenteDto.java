@@ -19,12 +19,12 @@ public record CreazioneUtenteDto(
 		String password,
 		@NotNull
 		RuoloUtente ruoloUtente,
-		@NotNull
 		@Positive
 		Long clienteId,
 		@Pattern(
 			    regexp = "^(\\+39)?\\s?3\\d{8,9}$",
 			    message = "Numero di telefono non valido.Controllare cifre prefisso nazionale"
 			)
+		@Size(max = 10,message = "Numero di telefono non valido")
 		Integer telefono) {
 }

@@ -1,6 +1,4 @@
 package com.medsupplyhub.medsupply_hub.model;
-
-import java.awt.Taskbar.State;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -45,6 +43,33 @@ public class Cliente {
 	
 	@OneToMany(mappedBy = "cliente")
 	private List<Utente> utenti = new ArrayList<>();
+	
+	
+	
+	
+	public Cliente(Long id, String ragioneSociale, String partitaIva, String codiceFiscale, String email,
+			String indirizzo, LocalDateTime dataCreazione, StatoCliente statoCliente, BigDecimal limiteCredito,
+			BigDecimal creditoUtilizzato, List<Utente> utenti) {
+		super();
+		this.id = id;
+		this.ragioneSociale = ragioneSociale;
+		this.partitaIva = partitaIva;
+		this.codiceFiscale = codiceFiscale;
+		this.email = email;
+		this.indirizzo = indirizzo;
+		this.dataCreazione = dataCreazione;
+		this.statoCliente = statoCliente;
+		this.limiteCredito = limiteCredito;
+		this.creditoUtilizzato = creditoUtilizzato;
+		this.utenti = utenti;
+	}
+	
+	
+	public Cliente() {
+	
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -104,6 +129,16 @@ public class Cliente {
 	}
 	public void setCreditoUtilizzato(BigDecimal creditoUtilizzato) {
 		this.creditoUtilizzato = creditoUtilizzato;
+	}
+
+
+	public List<Utente> getUtenti() {
+		return utenti;
+	}
+
+
+	public void setUtenti(List<Utente> utenti) {
+		this.utenti = utenti;
 	}
 	
 
