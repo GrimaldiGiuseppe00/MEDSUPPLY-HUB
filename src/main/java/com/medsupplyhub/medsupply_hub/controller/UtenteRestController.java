@@ -1,4 +1,4 @@
-/*
+
 
 package com.medsupplyhub.medsupply_hub.controller;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ import com.medsupplyhub.medsupply_hub.service.impl.UtenteServiceImpl;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/api/utenti")
+@RequestMapping(value = "/api/v1/utenti")
 public class UtenteRestController {
 	private UtenteServiceImpl utenteService;
 	
@@ -30,5 +30,3 @@ public class UtenteRestController {
 	}
 
 }
-
- */

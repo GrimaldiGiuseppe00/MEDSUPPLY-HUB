@@ -15,35 +15,38 @@ import static org.springframework.security.config.Customizer.withDefaults;;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	
-	
-	
-	
+
+
+
+
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated()).
-		httpBasic(withDefaults());
+		http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth
+				.requestMatchers("/api/v1/auth/**").permitAll()
+				.anyRequest().authenticated()
+				)
+		.httpBasic(withDefaults());
 		return http.build();
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean 
 	public AuthenticationManager authenticationManager(UtenteCustomDetailsServiceImpl customUtenteDetailsService,PasswordEncoder passwordEncoder) {
 		DaoAuthenticationProvider daoAuthenticationProvider=new DaoAuthenticationProvider(customUtenteDetailsService);
 		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
 		return new ProviderManager(daoAuthenticationProvider);
 	}
-	
-	
-	
+
+
+
 
 }

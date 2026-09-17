@@ -11,6 +11,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.medsupplyhub.medsupply_hub.model.Utente;
 
 public class UtenteCustomDetails implements UserDetails {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final Utente utente;
 
 	public UtenteCustomDetails(Utente utente) {
