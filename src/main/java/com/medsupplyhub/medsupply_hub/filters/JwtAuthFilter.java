@@ -47,14 +47,14 @@ public class JwtAuthFilter  extends OncePerRequestFilter{
 			//validiamo il token per utente e scadenza
 			if(jwtUtils.validaToken(nomeUtenteToken,utenteDetails,tokenJwt)) {
 				UsernamePasswordAuthenticationToken authToken=new UsernamePasswordAuthenticationToken(utenteDetails,null,utenteDetails.getAuthorities());
-				//aggiungiamo informazioni aggiuntive riguardanti la request http
+				//aggiungiamo informazioni aggiuntive riguardanti la request http(ip e sessione)
 				authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				SecurityContextHolder.getContext().setAuthentication(authToken);
 			}
-			//continua la catena di fitri per la request
-			filterChain.doFilter(request, response);
 		}
 		
+		//continua la catena di fitri per la request
+		filterChain.doFilter(request, response);
 		
 	}
 

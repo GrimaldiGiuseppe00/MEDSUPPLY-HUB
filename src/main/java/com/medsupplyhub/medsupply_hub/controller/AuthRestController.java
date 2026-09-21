@@ -34,10 +34,12 @@ public class AuthRestController {
 		} catch (Exception e) {
 			throw e;
 		}
-
 	}
 	@GetMapping("/verifica")
 	public String vericaRequestConToken() {
 		return "token valido";
 }
+	
+		
+	
 }
