@@ -36,7 +36,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth
 				.requestMatchers("/api/v1/auth/login").permitAll()
-				.requestMatchers("/api/v1/auth/verifica").hasRole("BCCHIN")
+				.requestMatchers("/api/v1/auth/verifica").hasRole("ADMIN")
 				.anyRequest().authenticated());
 		http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();
