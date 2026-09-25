@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.medsupplyhub.medsupply_hub.dto.request.utente.CreazioneUtenteDto;
 import com.medsupplyhub.medsupply_hub.dto.response.utente.UtenteResponseDto;
+import com.medsupplyhub.medsupply_hub.service.UtenteService;
 import com.medsupplyhub.medsupply_hub.service.impl.UtenteServiceImpl;
 
 import jakarta.validation.Valid;
@@ -16,9 +17,9 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping(value = "/api/v1/utenti")
 public class UtenteRestController {
-	private UtenteServiceImpl utenteService;
+	private UtenteService utenteService;
 	
-	public UtenteRestController(UtenteServiceImpl utenteService) {
+	public UtenteRestController(UtenteService utenteService) {
 		this.utenteService = utenteService;
 	}			
 
